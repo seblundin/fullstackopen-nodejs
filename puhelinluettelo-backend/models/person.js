@@ -19,7 +19,7 @@ const personSchema = new mongoose.Schema({
     type: String,
     minlength: 1,
     validate: validator => {
-      if (/^(?=.{8,}$).*[0-9]{2,3}-[0-9]{4,}/.test(validator))
+      if (/^([0-9]{2}-[0-9]{5,})$|^([0-9]{3}-[0-9]{4,})$/.test(validator))
         return Promise.resolve(true)
       return Promise.reject(new Error('Not a valid phone number'))
     },
