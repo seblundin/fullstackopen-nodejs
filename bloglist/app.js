@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const blogsRouter = require('./controllers/blogs')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
-const middleware = require('./utils/middleware').default
+const middleware = require('./utils/middleware')
 
 const app = express()
 mongoose.connect(config.MONGO_URI)
