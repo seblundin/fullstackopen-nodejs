@@ -10,6 +10,20 @@ usersRouter.post('/', async (request, response) => {
     return;
   }
 
+  if (username.length < 4) {
+    response
+      .status(400)
+      .json({ error: 'Username must be at least 3 characters long' });
+    return;
+  }
+
+  if (password.length < 4) {
+    response
+      .status(400)
+      .json({ error: 'Password must be at least 3 characters long' });
+    return;
+  }
+
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
 
@@ -20,7 +34,6 @@ usersRouter.post('/', async (request, response) => {
   });
 
   const savedUser = await user.save();
-
   response.status(201).json(savedUser);
 });
 
