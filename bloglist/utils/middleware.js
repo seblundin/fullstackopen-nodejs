@@ -1,11 +1,12 @@
 // eslint-disable-next-line consistent-return
 const errorHandler = (error, _request, response, next) => {
   if (error.name === 'CastError') {
-    return response.status(400).send({ error: 'malformatted id' })
-  } if (error.name === 'ValidationError') {
-    return response.status(400).json({ error: error.message })
+    return response.status(400).send({ error: 'malformatted id' });
   }
-  next(error)
-}
+  if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message });
+  }
+  next(error);
+};
 
-module.exports = { errorHandler }
+module.exports = { errorHandler };

@@ -1,25 +1,28 @@
 /* eslint-disable no-param-reassign */
 const mongoose = require('mongoose');
 
-const blogSchema = new mongoose.Schema({
-  title: {
+const userSchema = new mongoose.Schema({
+  username: {
     type: String,
     required: true,
   },
-  author: String,
-  url: {
+  password: {
     type: String,
     required: true,
   },
-  likes: { type: Number, default: 0 },
+  name: {
+    type: String,
+    required: true,
+  },
 });
 
-blogSchema.set('toJSON', {
+userSchema.set('toJSON', {
   transform: (_document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();
     delete returnedObject._id;
     delete returnedObject.__v;
+    delete returnedObject.password;
   },
 });
 
-module.exports = mongoose.model('Blog', blogSchema);
+module.exports = mongoose.model('User', userSchema);
