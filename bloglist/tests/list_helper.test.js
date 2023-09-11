@@ -28,8 +28,8 @@ describe('most liked blog', () => {
 
   test('should match the only given blog', () => {
     expect(listHelper.favoriteBlog(helper.listWithOneBlog)).toEqual({
-      title: 'Go To Statement Considered Harmful',
-      author: 'Edsger W. Dijkstra',
+      title: 'This list would be better as an object',
+      author: 'Author',
       likes: 5,
     });
   });
@@ -50,7 +50,7 @@ describe('the author with the most blogs', () => {
 
   test('is the only author of a list with one blog', () => {
     expect(listHelper.mostBlogs(helper.listWithOneBlog)).toEqual({
-      author: 'Edsger W. Dijkstra',
+      author: 'Author',
       blogs: 1,
     });
   });
@@ -70,7 +70,7 @@ describe('the author with the most likes', () => {
 
   test('is the only author when one blog is given', () => {
     expect(listHelper.mostLikes(helper.listWithOneBlog)).toEqual({
-      author: 'Edsger W. Dijkstra',
+      author: 'Author',
       likes: 5,
     });
   });

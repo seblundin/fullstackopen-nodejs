@@ -15,5 +15,6 @@ module.exports = {
     'no-console': 1,
     'no-underscore-dangle': 0,
     'require-await': 2,
+    'consistent-return': 0,
   },
 };

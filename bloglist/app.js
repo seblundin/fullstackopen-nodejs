@@ -4,9 +4,10 @@ require('express-async-errors');
 const mongoose = require('mongoose');
 const blogsRouter = require('./controllers/blogs');
 const usersRouter = require('./controllers/users');
+const loginRouter = require('./controllers/login');
 const config = require('./utils/config');
 const logger = require('./utils/logger');
-const middleware = require('./utils/middleware');
+const { tokenExtractor, errorHandler } = require('./utils/middleware');
 
 const app = express();
 mongoose
@@ -20,8 +21,10 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
+app.use(tokenExtractor);
 app.use('/api/blogs', blogsRouter);
 app.use('/api/users', usersRouter);
-app.use(middleware.errorHandler);
+app.use('/api/login', loginRouter);
+app.use(errorHandler);
 
 module.exports = app;
