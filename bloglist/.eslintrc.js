@@ -16,5 +16,6 @@ module.exports = {
     'no-underscore-dangle': 0,
     'require-await': 2,
     'consistent-return': 0,
+    'global-require': 0,
   },
 };
